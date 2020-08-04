@@ -16,7 +16,11 @@ pipeline{
         //         sh "terraform plan -target=module.vpc_1"
         //     }
         // }
-        
+        stage('ChangeDirectory'){
+            steps{
+                cd vpc-implementation
+            }
+        }
         // stage('Approval'){
         //     when{
         //         not{
