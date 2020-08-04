@@ -16,13 +16,13 @@ pipeline{
                 sh "terraform plan"
             }
         }
-        stage('Approval'){
-            when{
-                not{
-                    equals expected: true, actual: params.autoApprove
-                }
-            }
-        }
+        // stage('Approval'){
+        //     when{
+        //         not{
+        //             equals expected: true, actual: params.autoApprove
+        //         }
+        //     }
+        // }
         stage('Apply'){
             steps{
                 sh "terraform apply -targey=module.vpc_1 -auto-approve"
