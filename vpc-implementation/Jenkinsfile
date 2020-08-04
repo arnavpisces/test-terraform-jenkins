@@ -7,15 +7,16 @@ pipeline{
     }
 
     stages{
-        stage('Plan'){
-            steps{
-                script{
-                    currentBuild.displayName = params.version
-                }
-                sh 'terraform init'
-                sh "terraform plan -target=module.vpc_1"
-            }
-        }
+        // stage('Plan'){
+        //     steps{
+        //         script{
+        //             currentBuild.displayName = params.version
+        //         }
+        //         sh 'terraform init'
+        //         sh "terraform plan -target=module.vpc_1"
+        //     }
+        // }
+        
         // stage('Approval'){
         //     when{
         //         not{
@@ -25,6 +26,7 @@ pipeline{
         // }
         stage('Apply'){
             steps{
+                sh 'terraform init'
                 sh "terraform apply -target=module.vpc_1 -auto-approve"
             }
         }
