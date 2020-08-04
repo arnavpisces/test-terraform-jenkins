@@ -33,7 +33,7 @@ pipeline{
         // }
         stage('Apply'){
             steps{
-                vpc-implementation{
+                dir("vpc-implementation"){
                     sh 'terraform init'
                     sh "terraform apply -target=module.vpc_1 -auto-approve"
                 }
