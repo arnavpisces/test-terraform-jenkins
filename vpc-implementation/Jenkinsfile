@@ -18,7 +18,9 @@ pipeline{
         // }
         stage('ChangeDirectory'){
             steps{
-                sh 'cd vpc-implementation'
+                dir("vpc-implementation") {
+                    sh "pwd"
+                }
             }
         }
         // stage('Approval'){
