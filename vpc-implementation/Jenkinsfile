@@ -13,7 +13,7 @@ pipeline{
                     currentBuild.displayName = params.version
                 }
                 sh 'terraform init'
-                sh "terraform plan"
+                sh "terraform plan -target=module.vpc_1"
             }
         }
         // stage('Approval'){
@@ -25,7 +25,7 @@ pipeline{
         // }
         stage('Apply'){
             steps{
-                sh "terraform apply -targey=module.vpc_1 -auto-approve"
+                sh "terraform apply -target=module.vpc_1 -auto-approve"
             }
         }
     }
